@@ -3,6 +3,10 @@
 $url = 'https://raw.githubusercontent.com/dconnolly/chromecast-backgrounds/master/backgrounds.json';
 $bgs = json_decode(file_get_contents($url));
 
+if (!file_exists('bg')) {
+    mkdir('bg', 0777, true);
+}
+
 $dir_handle = @opendir('bg') or die("Unable to open $path");
 $files = array();
 while ($file = readdir($dir_handle)) {

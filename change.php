@@ -11,4 +11,4 @@ closedir($dir_handle);
 
 $rand_img = $files[array_rand($files)];
 
-copy(__DIR__.'/bg/'.$rand_img, 'background.jpg');
+copy(__DIR__.'/bg/'.$rand_img, __DIR__.'/background.jpg');

@@ -3,11 +3,11 @@
 $url = 'https://raw.githubusercontent.com/dconnolly/chromecast-backgrounds/master/backgrounds.json';
 $bgs = json_decode(file_get_contents($url));
 
-if (!file_exists('bg')) {
-    mkdir('bg', 0777, true);
+if (!file_exists(__DIR__.'/bg')) {
+    mkdir(__DIR__.'/bg', 0777, true);
 }
 
-$dir_handle = @opendir('bg') or die("Unable to open $path");
+$dir_handle = @opendir(__DIR__.'/bg') or die("Unable to open $path");
 $files = array();
 while ($file = readdir($dir_handle)) {
 	if(!in_array($file, array('.', '..'))){
@@ -27,7 +27,7 @@ foreach($bgs as $bg) {
 	}
 	
 	$img = file_get_contents($file_url);
-	$byteCountOrFalseOnFailure = file_put_contents('bg/' . $file_name, $img);
+	$byteCountOrFalseOnFailure = file_put_contents(__DIR__.'/bg/' . $file_name, $img);
 
 	echo 'Download : ' . $file_name . ' for ' . $byteCountOrFalseOnFailure . ' bytes' . "\n";
 }
